@@ -52,7 +52,6 @@ use 'L3MON4D3/LuaSnip'
 use 'saadparwaiz1/cmp_luasnip'
 use "rafamadriz/friendly-snippets"
 use "github/copilot.vim"
-
 use({
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -69,6 +68,13 @@ use {
 -- Treesitter
 use 'nvim-treesitter/nvim-treesitter'
 
+-- intend-blankline
+use "lukas-reineke/indent-blankline.nvim"
+
+use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
 
  if packer_bootstrap then
     require("packer").sync()
