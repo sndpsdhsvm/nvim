@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 
 local keymap = vim.keymap -- haz las cosas facil..
 
