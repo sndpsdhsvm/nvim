@@ -5,8 +5,8 @@ opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 
@@ -28,7 +28,7 @@ opt.signcolumn = "yes"
 -- Backspace
 opt.backspace = "indent,eol,start"
 
--- Clipboard 
+-- Clipboard
 opt.clipboard:append("unnamedplus")
 
 -- Splitt Windows
@@ -36,4 +36,3 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.iskeyword:append("-")
-

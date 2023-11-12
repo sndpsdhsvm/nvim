@@ -11,4 +11,4 @@ require("sndp.plugins.completions")
 require("sndp.plugins.telescope")
 require("sndp.plugins.treesitter")
 require("sndp.plugins.indent")
-
+require("sndp.plugins.conform")

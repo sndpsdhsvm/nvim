@@ -1,4 +1,3 @@
-
 local keymap = vim.keymap -- haz las cosas facil..
 
 -- General Keymaps
