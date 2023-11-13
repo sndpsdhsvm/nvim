@@ -12,6 +12,7 @@ Plugin.opts = {
     delete = { text = "➤" },
     topdelete = { text = "➤" },
     changedelete = { text = "┃" },
+    untracked = { text = "┇" },
   },
 }
 
