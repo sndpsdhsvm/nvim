@@ -8,7 +8,7 @@ Plugin.event = { "BufReadPost", "BufNewFile" }
 
 -- See :help mason-settings
 Plugin.opts = {
-  indent = { char = "┃" },
+  indent = { char = "│" },
   scope = { exclude = { language = { "lua" } } },
 }
 
