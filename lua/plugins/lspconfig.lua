@@ -62,6 +62,10 @@ return {
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+      vim.keymap.set("n", "<leader>dl", function()
+        vim.diagnostic.setqflist()
+      end, opts)
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
@@ -95,6 +99,11 @@ return {
 
     -- configure tailwindcss server
     lspconfig["tailwindcss"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig["dartls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
