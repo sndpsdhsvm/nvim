@@ -71,60 +71,45 @@ return {
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- Define diagnostic signs with icons
-    local signs = {
-      { name = "DiagnosticSignError", text = "" },
-      { name = "DiagnosticSignWarn", text = "" },
-      { name = "DiagnosticSignHint", text = "󰠠" },
-      { name = "DiagnosticSignInfo", text = "" },
-    }
-
-    for _, sign in ipairs(signs) do
-      vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name, numhl = "" })
+    -- Change the Diagnostic symbols in the sign column (gutter)
+    -- (not in youtube nvim video)
+    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    -- Configure diagnostic display
-    vim.diagnostic.config({
-      virtual_text = {
-        prefix = "●", -- Could be '●', '▎', '■', etc.
-      },
-      signs = true,
-      underline = true,
-      update_in_insert = false,
-      severity_sort = true,
-    })
-
     -- configure html server
-    lspconfig["html"].setup({
+    vim.lsp.config("html", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure typescript server with plugin
-    lspconfig["ts_ls"].setup({
+    vim.lsp.config("tsserver", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure css server
-    lspconfig["cssls"].setup({
+    vim.lsp.config("cssls", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure tailwindcss server
-    lspconfig["tailwindcss"].setup({
+    vim.lsp.config("tailwindcss", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    lspconfig["dartls"].setup({
+    vim.lsp.config("dartls", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure svelte server
-    lspconfig["svelte"].setup({
+    vim.lsp.config("svelte", {
       capabilities = capabilities,
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
@@ -141,20 +126,20 @@ return {
     })
 
     -- configure prisma orm server
-    lspconfig["prismals"].setup({
+    vim.lsp.config("prismals", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure graphql language server
-    lspconfig["graphql"].setup({
+    vim.lsp.config("graphql", {
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
     })
 
     -- configure emmet language server
-    lspconfig.emmet_language_server.setup({
+    vim.lsp.config("emmet_language_server", {
       filetypes = {
         "css",
         "eruby",
@@ -190,14 +175,15 @@ return {
         variables = {},
       },
     })
+
     -- configure python server
-    lspconfig["pyright"].setup({
+    vim.lsp.config("pyright", {
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure lua server (with special settings)
-    lspconfig["lua_ls"].setup({
+    vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua
